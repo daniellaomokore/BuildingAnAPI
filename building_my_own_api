@@ -29,15 +29,6 @@ def get_flight_by_id(id):
 
 
 
-
-
-
-
-
-
-
-
-
 """ ADDING NEW FLIGHTS TO THE API """
 
 # POST request - As an API is when we add info the API URL as requested by client/user
@@ -47,14 +38,6 @@ def add_flight():
     flight = request.get_json()                     #We receive the data from the client via this request
     flights.append(flight)                          #append the users data input into the 'flights' dictionary
     return flight
-
-
-
-
-
-
-
-
 
 
 
@@ -68,15 +51,6 @@ def update_flight(id):
     index = get_index(id, flights)
     flights[index] = flight_to_update
     return jsonify(flights[index])
-
-
-
-
-
-
-
-
-
 
 
 """ DELETING A FLIGHT """
