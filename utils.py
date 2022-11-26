@@ -7,6 +7,9 @@ def search_flight(fid, flights):
             return entry
     return None
 
+
+
+# This function finds the index of the flight within the flights dictionary by it's flight id number
 def get_index(fid, flights):
     for i, flight in enumerate(flights):
         if flight['flight_id'] == fid:

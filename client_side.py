@@ -4,7 +4,9 @@ import json
 """ These all show the functions that carry out the HTTP request methods (POST,PUT,DELETE) to the API """
 """ We don't need GET here as GET is automatically run by default whenever we just load the URL endpoints """
 
-#POST REQUEST
+# NOTE run each request type separately by commenting out the other to show how the all work on the endpoint correctly
+
+# POST REQUEST
 new_flight = {
       "from_city": "Stockholm",
       "to_city": "Oslo",

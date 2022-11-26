@@ -33,17 +33,18 @@ def get_flight_by_id(id):
 
 
 
+""" HOW TO USE QUERY STRING """
 # Below this shows how to construct a HTTP request method using a query string
 # The query string starts from where there is a question mark '?'
+# In this case the url would be "/city/?to_city=barcelona" ,btw you can enter anything where it says 'barcelona'
 @app.route('/city/', methods=['GET'])
 def request_page():
-    user_query = str(request.args.get('to_city')) #  /city/?to_city=barcelona,btw you can enter anything where it says 'barcelona'
-                                                  # 'user_query' requests a string argument in the field 'to_city'
-                                                  # where the user can input a string into the query such as a city
+    user_query = str(request.args.get('to_city')) # 'user_query' requests a string argument in the field 'to_city'
+                                                  #  where the user can input a string into the query such as a city
 
-    data_set = {'Page': 'Request', 'Message': f'Successfully got the request for {user_query}', 'Timestamp': time.time()}
+    data_set = {'Page': 'Request', 'Message': f'Successfully got the request for {user_query}', 'Timestamp': time.time()}   # We've used a timestamp here to show that our API is live and running correctly each time we refresh the endpoint URL
 
-    return jsonify(data_set)  # returned to us as a json file
+    return jsonify(data_set)                      # returned to us as a json file using jsonify
 
 
 
@@ -69,7 +70,7 @@ def add_flight():
 
 @app.route('/flights/<int:id>', methods=['PUT'])
 def update_flight(id):
-    flight_to_update = request.get_json()            #We receive the data from the client via this request
+    flight_to_update = request.get_json()            # We receive the data from the client via this request
     index = get_index(id, flights)
     flights[index] = flight_to_update
     return jsonify(flights[index])
