@@ -1,6 +1,9 @@
+import json
+
 from flask import Flask, jsonify, request
 from flights_data import flights             # import your data and it's dictionary/s
 from utils import search_flight, get_index
+import time
 
 app = Flask(__name__)
 
@@ -26,7 +29,23 @@ def get_flights():
 @app.route('/flights/<int:id>', methods=['GET'])   #  this specifies that the input should be an integer and that it's assigned as a variable called id
 def get_flight_by_id(id):
     flight = search_flight(id, flights)          # This returns the flights list (from the flight_data.py file) from the dictionary that has the same id number
-    return jsonify(flight)
+    return json.dumps(flight)                    # example of using dumps for data sterlisation
+
+
+
+# Below this shows how to construct a HTTP request method using a query string
+# The query string starts from where there is a question mark '?'
+@app.route('/city/', methods=['GET'])
+def request_page():
+    user_query = str(request.args.get('to_city')) #  /city/?to_city=barcelona,btw you can enter anything where it says 'barcelona'
+                                                  # 'user_query' requests a string argument in the field 'to_city'
+                                                  # where the user can input a string into the query such as a city
+
+    data_set = {'Page': 'Request', 'Message': f'Successfully got the request for {user_query}', 'Timestamp': time.time()}
+
+    return jsonify(data_set)  # returned to us as a json file
+
+
 
 
 
