@@ -5,38 +5,41 @@ from utils import search_flight, get_index
 app = Flask(__name__)
 
 """ GETTING INFORMATION FROM THE API """
+""" This can be done directly from the browser """
 
 # GET request - As an API, info is retrieved from the API URL as requested by client/user.
 
-# @app.route is the URL the app exists under
-@app.route('/')                                   # This is a GET request by default - Means: if the url is visited...
+# @app.route() contains the URL the app exists under and it's HTTP method
+@app.route('/', methods=['GET'])
 def hello():
-    return {'hello': 'Universe'}                  # ... then return 'hello' : 'universe' to the """
+    return {'hello': 'Universe'}
 
 
-@app.route('/flights')                            # This is a GET request by default - Means: if the url is visited...
+@app.route('/flights', methods=['GET'])
 def get_flights():
-    return jsonify(flights)                       # Return the 'flights' data in a json format to  . It gets extracted from the 'flights_data.py' file
-# Paste this URL into the web to run this - http://127.0.0.1:5000/flights
+    return jsonify(flights)                       # Returns the 'flights' data in a json format to which was extracted from the 'flights_data.py' file
 
 
-@app.route('/flights/<int:id>')                  # This is a GET request by default - this specifies that the input should be an integer and that it's assigned as a variable called id
+
+# on line 26, the <> and it's insides indicate that it's an integer and the variable 'id'
+# the id number that's put into the URL path below is then sent to the 'get_flight_by_id' parameter etc
+@app.route('/flights/<int:id>', methods=['GET'])   #  this specifies that the input should be an integer and that it's assigned as a variable called id
 def get_flight_by_id(id):
     flight = search_flight(id, flights)          # This returns the flights list (from the flight_data.py file) from the dictionary that has the same id number
     return jsonify(flight)
 
-# Paste the URL into the web to run this to get the info for the flight that has the id of 555 - http://127.0.0.1:5000/flights/555
-
 
 
 """ ADDING NEW FLIGHTS TO THE API """
+""" This can't be done directly from the browser, so we need to use a different program """
 
 # POST request - As an API is when we add info the API URL as requested by client/user
 
 @app.route('/flights', methods=['POST'])
 def add_flight():
-    flight = request.get_json()                     #We receive the data from the client via this request
-    flights.append(flight)                          #append the users data input into the 'flights' dictionary
+    flight = request.get_json()                     #  We receive the data from the client via this request
+    flights.append(flight)                          #  append the users data input into the 'flights' dictionary
+                                                    #  appends the JSON that we receive in the request
     return flight
 
 

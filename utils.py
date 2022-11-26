@@ -3,7 +3,7 @@ def search_flight(fid, flights):
     # within each dictionary, there is a key flights_id
     for entry in flights:
         # each entry will be a dictionary
-        if entry['flight_id'] == fid:
+        if entry['flight_id'] == fid:  # if the flight id of the current entry is equal to the id searched
             return entry
     return None
 
