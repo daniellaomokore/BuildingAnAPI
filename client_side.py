@@ -6,6 +6,7 @@ import json
 
 # NOTE run each request type separately by commenting out the other to show how the all work on the endpoint correctly
 # NOTE POST & PUT requests use request body as they are sending info. GET and DELETE do not use request body
+# NOTE you only need the authorisation header if the api is private/secret
 
 # POST REQUEST
 new_flight = {
@@ -21,7 +22,7 @@ new_flight = {
       "flight_id": 777
 }
 
-# lines 22-25 below shows us creating a HTTP POST request with headers and body
+# lines 26-30 below shows us creating a HTTP POST request with headers and body
 headers = {'content-type': 'application/json',
            'Authorization': '[your API key]'}
 result = requests.post(
@@ -40,7 +41,7 @@ updated_flight = {
 
 fid = 555
 
-# lines 44-47 below shows us creating a HTTP PUT request with headers and body
+# lines 45-49 below shows us creating a HTTP PUT request with headers and body
 headers = {'content-type': 'application/json',
            'Authorization': '[your API key]'}
 result = requests.put(
@@ -56,7 +57,7 @@ print(result)
 
 fid = 555
 
-# lines 60-63 below shows us creating a HTTP DELETE request with headers and body
+# lines 61-65 below shows us creating a HTTP DELETE request with headers and body
 headers = {'content-type': 'application/json',
            'Authorization': '[your API key]'}
 result = requests.delete(
