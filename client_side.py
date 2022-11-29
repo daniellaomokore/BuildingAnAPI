@@ -30,8 +30,6 @@ print(result)
 
 
 
-
-
 # PUT REQUEST
 updated_flight = {
      "new content": "test",
@@ -46,7 +44,6 @@ result = requests.put(
     'http://127.0.0.1:5000/flights/{}'.format(fid), headers=headers, data=json.dumps(updated_flight)
 )
 print(result)
-
 
 
 
