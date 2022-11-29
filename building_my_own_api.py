@@ -44,7 +44,7 @@ def get_flights():
 
 
 
-# on line 26, the <> and it's insides indicate that it's an integer and the variable 'id'
+# on line 49, the <> and it's insides indicate that it's an integer and the variable 'id'
 # the id number that's put into the URL path below is then sent to the 'get_flight_by_id' parameter etc
 @app.route('/flights/<int:id>', methods=['GET'])   #  this specifies that the input should be an integer and that it's assigned as a variable called id
 def get_flight_by_id(id):
