@@ -28,9 +28,12 @@ headers = {'content-type': 'application/json',
 result = requests.post(
     'http://127.0.0.1:5000/flights', headers=headers, data=json.dumps(new_flight),
 )
-print(result)
+print(result.text)  # this shows us what gets posted to the api endpoint
 
 
+
+
+"""
 
 
 # PUT REQUEST
@@ -64,4 +67,4 @@ result = requests.delete(
     'http://127.0.0.1:5000/flights/{}'.format(fid), headers=headers
 )
 
-print(result)
+print(result)"""
